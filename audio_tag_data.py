@@ -1,11 +1,10 @@
 # audio_tag_data.py
 from datetime import date
 from enum import Enum
-from typing import Dict
-
+from typing import Dict, Set
 
 # Supported audio file types
-AUDIO_FILE_SUFFIXES = {'.mp3', '.flac'}
+AUDIO_FILE_SUFFIXES: Set[str] = {'.mp3', '.flac'}
 
 # Supported tag fields
 AudioTagKey = Enum('AudioTagKey', 'album artist comment composer genre title track_number year')
