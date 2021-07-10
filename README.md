@@ -49,8 +49,8 @@ Loading works with .flac files in the same way!
 
 >>> tag_data = AudioTagData()
 >>> tag_data.set_key_value_pair(AudioTagKey.artist, 'Mozart')
->>> tag_data.set_key_value_pair(AudioTagKey.title, 'Symphony No. 40 in g minor')
->>> tag_data.set_key_value_pair(AudioTagKey.artist, 'Rolling Stones')
+>>> tag_data.set_key_value_pair(AudioTagKey.title, 'Symphony No. 40 in g minor, I. Molto allegro')
+>>> tag_data.set_key_value_pair(AudioTagKey.album, 'Mozart: Symphony #40')
 
 >>> with open('picture.jpeg', "rb") as f:
 ...     	picture_data = f.read()
