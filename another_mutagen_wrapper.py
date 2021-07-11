@@ -60,6 +60,15 @@ class AudioTagData:
     def picture(self, picture: AudioTagPicture):
         self._picture = picture
 
+    def update_comment(self, new_comment: str):
+        self.set_key_value_pair(AudioTagKey.comment, new_comment)
+
+    def replace_in_all_fields(self, replace: str, replace_with: str):
+        self._key_value_mapping = {
+            key: content.replace(replace, replace_with)
+            for key, content in self._key_value_mapping.items()
+        }
+
     def pprint(self):
         for key, value in self._key_value_mapping.items():
             print(f"{key}: {value}")
