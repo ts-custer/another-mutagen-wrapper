@@ -23,22 +23,22 @@ Wraps mutagen library (https://github.com/quodlibet/mutagen) to be able to load 
 >>> tag_data = amw.fetch_tag_data('beatles_yellow_submarine.mp3')
 >>>
 >>> # Get the stored artist:
->>> tag_data.get_value_by_key(AudioTagKey.artist)
+>>> tag_data.get_value_by_key(amw.AudioTagKey.artist)
 'The Beatles'
 >>>
 >>> # Get the stored title:
->>> tag_data.get_value_by_key(AudioTagKey.title)
+>>> tag_data.get_value_by_key(amw.AudioTagKey.title)
 'Yellow Submarine'
 >>>
 >>> # Get the stored album:
->>> tag_data.get_value_by_key(AudioTagKey.album)
+>>> tag_data.get_value_by_key(amw.AudioTagKey.album)
 'Revolver'
 >>>
 >>> # Get other tag values as well -> see supported tag fields
 >>>
 >>> # Get the stored picture:
 >>> tag_data.picture
-<audio_tag_data.AudioTagPicture object at 0x7f60432ffa00>
+<another_mutagen_wrapper.AudioTagPicture object at 0x7f60432ffa00>
 >>> # Get the picture data as bytes:
 >>> tag_data.picture.data
 b'\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01\x01\x01\x01,\x01,\x00\x00\xff\xe1\x1c0Exif\x00\x00II*\x00\x08\x00\x00\x00\x07\x00\x1a\x01\x05\x00\x01\x00\x00\x00b\x00\x00\x00\x1b\x01\x05\x00\x01\x00\x00\x00j\x00\x00\x00(\x01\x03\x00\x01\x00\x00\x00\x02\x00\x00\x001\x01\x02\x00\r\x00\x00\x00r\x00\x00\x002\x01\x02\x00\x14\x00\x00\x00\x80\x00\x00\x00\x12\x02\x03
