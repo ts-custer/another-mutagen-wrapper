@@ -1,5 +1,4 @@
 # another_mutagen_wrapper.py
-from datetime import date
 from enum import Enum
 from typing import Dict, Set
 
