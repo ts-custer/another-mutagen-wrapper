@@ -1,4 +1,4 @@
-# audio_tag_data.py
+# another_mutagen_wrapper.py
 from datetime import date
 from enum import Enum
 from typing import Dict, Set
@@ -95,3 +95,29 @@ def check_and_fetch_file_suffix(file_name: str) -> str:
         exit(1)
     else:
         return file_suffix
+
+
+def fetch_tag_data(audio_file: str) -> AudioTagData:
+    file_suffix = check_and_fetch_file_suffix(audio_file)
+    if file_suffix == '.mp3':
+        import mp3
+        mp3_tag_fetcher = mp3.Mp3TagFetcher(audio_file)
+        mp3_tag_fetcher.fetch_mp3_tag()
+        return mp3_tag_fetcher.tag_data
+    elif file_suffix == '.flac':
+        import flac
+        flac_tag_fetcher = flac.FlacTagFetcher(audio_file)
+        flac_tag_fetcher.fetch_tags()
+        return flac_tag_fetcher.tag_data
+
+
+def write_tag_data_to_file(tag_data: AudioTagData, audio_file: str):
+    file_suffix = check_and_fetch_file_suffix(audio_file)
+    if file_suffix == '.mp3':
+        import mp3
+        mp3.delete_mp3_tags(audio_file)
+        mp3.Mp3TagWriter(audio_file).write(tag_data)
+    elif file_suffix == '.flac':
+        import flac
+        flac.delete_flac_tags(audio_file)
+        flac.FlacTagWriter(audio_file).write(tag_data)

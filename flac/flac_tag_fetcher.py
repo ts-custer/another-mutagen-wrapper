@@ -1,8 +1,8 @@
 # flac_tag_fetcher.py
 import mutagen
 
-from flac import key_to_field_name_mapping
-from audio_tag_data import AudioTagData, AudioTagPicture, AudioTagKey
+import flac
+import another_mutagen_wrapper as amw
 from mutagen.flac import FLAC
 from mutagen import id3
 
@@ -14,12 +14,12 @@ class FlacTagFetcher:
         self.flac_file = mutagen.File(flac_file)
 
     def fetch_tags(self):
-        self._tag_data = AudioTagData()
-        for key, field_name in key_to_field_name_mapping.items():
+        self._tag_data = amw.AudioTagData()
+        for key, field_name in flac.key_to_field_name_mapping.items():
             content = self.flac_file.get(field_name) and self.flac_file.get(field_name)[0]
             if content:
                 self._tag_data.set_key_value_pair(key, content)
-                if key == AudioTagKey.track_number:
+                if key == amw.AudioTagKey.track_number:
                     self.fix_track_number_if_necessary(content, key)
         self.fetch_picture()
 
@@ -35,7 +35,7 @@ class FlacTagFetcher:
         for p in pics:
             # if p.type == 3:  # front cover
             if p.type == id3.PictureType.COVER_FRONT:
-                self._tag_data.picture = AudioTagPicture(p.desc, p.data)
+                self._tag_data.picture = amw.AudioTagPicture(p.desc, p.data)
 
     @property
     def tag_data(self):
