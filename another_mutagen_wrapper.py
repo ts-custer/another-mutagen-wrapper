@@ -77,15 +77,6 @@ class AudioTagData:
     def __str__(self):
         return 'AudioTagData (' + str(self._key_value_mapping) + ', ' + str(self._picture) + ')'
 
-    def update_comment(self):
-        self.set_key_value_pair(AudioTagKey.comment, str(date.today()))
-
-    def replace(self, replace: str, replace_with: str):
-        self._key_value_mapping = {
-            key: content.replace(replace, replace_with)
-            for key, content in self._key_value_mapping.items()
-        }
-
 
 def check_and_fetch_file_suffix(file_name: str) -> str:
     last_dot_index = file_name.rfind('.')
