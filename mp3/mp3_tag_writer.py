@@ -4,15 +4,22 @@
 from mutagen.easyid3 import EasyID3
 from mutagen.mp3 import MP3
 from mutagen.id3 import APIC
+from mutagen.id3 import ID3NoHeaderError
+import mutagen
 
 import mp3
 import another_mutagen_wrapper as amw
 
 
 def delete_mp3_tags(mp3_full_file_name: str):
-    mp3_file = EasyID3(mp3_full_file_name)
-    mp3_file.delete()
-    mp3_file.save()
+    try:
+        mp3_file = EasyID3(mp3_full_file_name)
+        mp3_file.delete()
+        mp3_file.save()
+    except mutagen.id3._util.ID3NoHeaderError:
+        # mp3_file has no ID3 header -> mp3_file has no tags to delete
+        pass
+
 
 
 class Mp3TagWriter:
