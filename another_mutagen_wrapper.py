@@ -2,6 +2,16 @@
 from enum import Enum
 from typing import Dict, Set
 
+'''
+How to use:
+1. Install python mutagen with 'apt-get install python3-mutagen'
+2. Install another-mutagen-wrapper to your computer
+3. Add your copy of another-mutagen-wrapper to your PYTHONPATH by adding the following line to your ~/.bashrc file:
+    export PYTHONPATH=/PATH-TO/another-mutagen-wrapper/
+    e.g. export PYTHONPATH=/home/jimkirk/python/modules/another-mutagen-wrapper/
+   After you have changed your ~/.bashrc file you must logout and then re-login to your Linux.
+'''
+
 # Supported audio file types
 AUDIO_FILE_SUFFIXES: Set[str] = {'.mp3', '.flac'}
 
