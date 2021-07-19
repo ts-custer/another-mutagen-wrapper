@@ -14,6 +14,10 @@ class Mp3TagFetcher:
 
     def fetch_mp3_tag(self):
         self._tag_data = amw.AudioTagData()
+        if self.mp3_file.tags:
+            self._execute_fetching()
+
+    def _execute_fetching(self):
         frame_id_to_mutagen_key = {mutagen_key[:4]: mutagen_key for mutagen_key in self.mp3_file.tags.keys()}
         for frame_id, mutagen_key in frame_id_to_mutagen_key.items():
             key: amw.AudioTagKey = mp3.frame_id_to_key_mapping.get(frame_id)
@@ -21,9 +25,9 @@ class Mp3TagFetcher:
                 content = self.mp3_file.tags.get(mutagen_key) and self.mp3_file.tags.get(mutagen_key).text[0]
                 if content:
                     self._tag_data.set_key_value_pair(key, content)
-        self.fetch_picture()
+        self._fetch_picture()
 
-    def fetch_picture(self):
+    def _fetch_picture(self):
         apic_list = self.mp3_file.tags.getall('APIC')
         if apic_list:
             first_apic = apic_list[0]
