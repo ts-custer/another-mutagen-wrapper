@@ -37,7 +37,7 @@ class Mp3TagWriter:
         if self.mp3_file.tags is None:
             self.mp3_file.add_tags()
         frame_class = mp3.key_to_frame_class_mapping.get(key)
-        self.mp3_file.tags.add(frame_class(encoding=3, text=content))
+        self.mp3_file.tags.add(frame_class(encoding=3, text=str(content)))
 
     def set_picture(self, new_picture: amw.AudioTagPicture):
         self.mp3_file.tags.add(APIC(encoding=3,
