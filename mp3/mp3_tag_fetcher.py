@@ -22,7 +22,8 @@ class Mp3TagFetcher:
         for frame_id, mutagen_key in frame_id_to_mutagen_key.items():
             key: amw.AudioTagKey = mp3.frame_id_to_key_mapping.get(frame_id)
             if key:
-                content = self.mp3_file.tags.get(mutagen_key) and self.mp3_file.tags.get(mutagen_key).text[0]
+                content = self.mp3_file.tags.get(mutagen_key)
+                content = content and content.text[0]
                 if content:
                     self._tag_data.set_key_value_pair(key, content)
         self._fetch_picture()

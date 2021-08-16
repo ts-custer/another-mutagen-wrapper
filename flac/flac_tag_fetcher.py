@@ -16,7 +16,8 @@ class FlacTagFetcher:
     def fetch_tags(self):
         self._tag_data = amw.AudioTagData()
         for key, field_name in flac.key_to_field_name_mapping.items():
-            content = self.flac_file.get(field_name) and self.flac_file.get(field_name)[0]
+            content = self.flac_file.get(field_name)
+            content = content and content[0]
             if content:
                 self._tag_data.set_key_value_pair(key, content)
                 if key == amw.AudioTagKey.track_number:
