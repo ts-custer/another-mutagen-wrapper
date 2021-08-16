@@ -21,7 +21,6 @@ def delete_mp3_tags(mp3_full_file_name: str):
         pass
 
 
-
 class Mp3TagWriter:
 
     def __init__(self, mp3_file: str):
