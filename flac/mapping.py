@@ -14,5 +14,3 @@ key_to_field_name_mapping: Dict[amw.AudioTagKey, str] = {
     amw.AudioTagKey.track_number: 'TRACKNUMBER',
     # field name 'PICTURE': AudioTagPicture is handled in another way!
 }
-
-field_name_to_key_mapping: Dict[str, amw.AudioTagKey] = {v: k for k, v in key_to_field_name_mapping.items()}

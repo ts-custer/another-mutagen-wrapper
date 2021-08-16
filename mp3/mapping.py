@@ -24,6 +24,3 @@ key_to_frame_class_mapping = {v: k for k, v in _frame_class_to_key_mapping.items
 key_to_frame_class_mapping[amw.AudioTagKey.year] = TDRC
 
 frame_id_to_key_mapping: Dict[str, amw.AudioTagKey] = {k.__name__: v for k, v in _frame_class_to_key_mapping.items()}
-
-key_to_frame_id_mapping: Dict[amw.AudioTagKey, str] = {v: k for k, v in frame_id_to_key_mapping.items()}
-
